@@ -1,0 +1,44 @@
+@import '/src/scss/variables';
+
+
+.header {
+ padding: 20px 0;
+  
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+
+
+  .userBlock {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    span {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+      /* identical to box height */
+
+
+      color: $text;
+    }
+  }
+
+  .userIcon {
+    margin-right: 10px;
+  }
+
+  .settingsIcon {
+    margin-left: 15px;
+  }
+}
