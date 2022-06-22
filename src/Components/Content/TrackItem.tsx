@@ -1,7 +1,11 @@
 import styles from './Content.module.scss';
 import React from 'react';
 
-function TrackItem({ color }) {
+type Color = {
+  color: string;
+};
+
+const TrackItem: React.FC<Color> = ({ color }) => {
   const [active, setActive] = React.useState(0);
 
   if (active > 2) {
@@ -15,6 +19,6 @@ function TrackItem({ color }) {
         active === 2 ? styles.skip : ''
       }`}></li>
   );
-}
+};
 
 export default TrackItem;

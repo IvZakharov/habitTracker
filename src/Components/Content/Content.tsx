@@ -3,9 +3,20 @@ import Day from './Day';
 import TrackItem from './TrackItem';
 import React from 'react';
 
-function Content({ arr }) {
-  const ref = React.useRef(0);
-  const dateData = [];
+import { useAppDispatch } from '../../redux/hooks';
+import { habitsData } from '../../data';
+
+function Content() {
+  type dateObj = {
+    weekday: string;
+    day: string;
+    full: string;
+  };
+
+  const arr = habitsData;
+
+  const dateData: dateObj[] = [];
+  const ref = React.useRef<HTMLDivElement>(null);
   const [columns, setColumns] = React.useState(2);
   const contentWidth = useWindowSize();
 
@@ -18,7 +29,9 @@ function Content({ arr }) {
     const [size, setSize] = React.useState(0);
     React.useLayoutEffect(() => {
       function updateSize() {
-        setSize(ref.current.offsetWidth);
+        if (ref.current) {
+          setSize(ref.current.offsetWidth);
+        }
       }
       window.addEventListener('resize', updateSize);
       updateSize();
@@ -27,19 +40,18 @@ function Content({ arr }) {
     return size;
   }
 
-  console.log(dateData);
-
   // создаем дату в зависимости от колонок
-  const dtimeNums = (i) => {
-    const obj = {
+  const dtimeNums = (i: number) => {
+    const obj: dateObj = {
       weekday: 'weekday',
       day: 'day',
+      full: '',
     };
-    const today = new Date();
+    const today: Date = new Date();
     today.setDate(today.getDate() - i);
     obj.weekday = today.toLocaleString('default', { weekday: 'short' });
     obj.day = today.toLocaleString('default', { day: 'numeric' });
-    obj.full = today.getDate() + '/' + parseInt(today.getMonth() + 1) + '/' + today.getFullYear();
+    obj.full = today.getDate() + '/' + today.getMonth() + 1 + '/' + today.getFullYear();
     return obj;
   };
 

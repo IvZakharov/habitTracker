@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import logoSvg from './img/logo.svg';
 
-function Header() {
+export const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={`${styles.headerWrapper} container`}>
@@ -42,6 +42,4 @@ function Header() {
       </div>
     </header>
   );
-}
-
-export default Header;
+};

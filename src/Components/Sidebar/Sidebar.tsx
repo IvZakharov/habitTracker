@@ -1,6 +1,16 @@
 import styles from './Sidebar.module.scss';
+import { useAppDispatch } from '../../redux/hooks';
+import { habitsData } from '../../data';
 
-function Sidebar({ arr, onClickNewButton }) {
+type SidebarProps = {
+  onClickNewButton: () => void;
+};
+
+console.log(habitsData);
+
+const arr = habitsData;
+
+const Sidebar: React.FC<SidebarProps> = ({ onClickNewButton }) => {
   return (
     <div className={styles.sidebar}>
       <h2 className={styles.title}>Habits</h2>
@@ -18,6 +28,6 @@ function Sidebar({ arr, onClickNewButton }) {
       </button>
     </div>
   );
-}
+};
 
 export default Sidebar;
